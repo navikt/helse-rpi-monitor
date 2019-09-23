@@ -1,0 +1,12 @@
+[Unit]
+Description=Chromium
+
+[Service]
+ExecStart=/usr/bin/chromium-browser --kiosk --allow-running-insecure-content --ignore-certificate-errors --no-first-run --disable-sync --disable-prompt-on-repost --disable-default-apps --disable-background-networking --app="https://nais.io/monitor?hostname=%H&screenMapUrl=https://nais.io/monitor/screenMap.json"
+Environment=DISPLAY=:0.0
+Environment=XAUTHORITY=/home/pi/.Xauthority
+Restart=always
+KillSignal=SIGKILL
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,155 @@
+# vi: se ts=2 sts=2 sw=2 et:
+
+- hosts: all
+  remote_user: pi
+  tasks:
+  - name: Ensure hostname set
+    become: true
+    hostname:
+      name: "{{ inventory_hostname }}"
+    when: not inventory_hostname is match('(\d{1,3}\.){3}\d{1,3}')
+  - name: Ensure hostname is in /etc/hosts
+    become: true
+    lineinfile:
+      dest: /etc/hosts
+      regexp: "^{{ ansible_default_ipv4.address }}.+$"
+      line: "{{ ansible_default_ipv4.address }} {{ ansible_fqdn }} {{ ansible_hostname }}"
+  - name: configure display env var in bashrc
+    lineinfile:
+      dest: /home/pi/.bashrc
+      line: "export DISPLAY=:0.0"
+  - name: configure HDMI hotplug
+    become: true
+    lineinfile:
+      dest: /boot/config.txt
+      line: "hdmi_force_hotplug=1"
+  - name: Copy grafana_logo
+    copy:
+      src: grafana_logo.png
+      dest: /home/pi/grafana_logo.png
+      owner: pi
+      mode: 'u+r'
+  - name: Copy healthcheck script
+    copy:
+      src: healthcheck.sh
+      dest: /home/pi/healthcheck.sh
+      owner: pi
+      mode: 'u+x'
+  - name: Creates an entry like "DISPLAY=:0.0" on top of crontab
+    cron:
+      name: DISPLAY
+      env: yes
+      value: ":0.0"
+  - name: Schedule move mouse out of screen
+    cron:
+      name: Move mouse out of screen
+      user: pi
+      job: /usr/bin/xdotool mousemove 2000 2000 > /dev/null
+  - name: Schedule healthcheck
+    cron:
+      name: Perform healthcheck every minute
+      user: pi
+      job: /home/pi/healthcheck.sh > /dev/null
+  - name: Copy disable_fullscreen script
+    copy:
+      src: disable_fullscreen.sh
+      dest: /home/pi/disable_fullscreen.sh
+      owner: pi
+      mode: 'u+x'
+  - name: Schedule disable fullscreen every minute (to show i3-bar)
+    cron:
+      name: Disable fullscreen every minute
+      user: pi
+      job: /home/pi/disable_fullscreen.sh > /dev/null
+  - name: Inform abut self to stdout webservice
+    cron:
+      name: Inform abut self to stdout webservice
+      hour: "*"
+      minute: "*"
+      user: pi
+      job: |
+        curl -H "ip: $(hostname -i)" -H "hostname: $(hostname)" https://logheaders.desperate.solutions/
+  - name: Reboot daily at 13
+    become: true
+    cron:
+      name: Reboot daily at 13
+      hour: "13"
+      user: root
+      job: reboot
+  - name: Schedule restart chromium every 8 hours
+    cron:
+      name: Restart chromium every 8 hours
+      minute: "0"
+      hour: "*/8"
+      user: pi
+      job: killall chromium-browser-v7 > /dev/null
+  - name: Set timezone
+    become: true
+    timezone:
+      name: Europe/Oslo
+  - name: Upgrade all packages to the latest version
+    become: true
+    apt:
+      name: "*"
+      state: latest
+  - name: Ensure packages are present (no install recommends)
+    become: true
+    apt:
+      name: ["postfix" , "xserver-xorg" , "xinit" , "lightdm" , "imagemagick" , "bc"]
+      state: present
+      install_recommends: no
+  - name: Ensure packages are present (install recommends)
+    become: true
+    apt:
+      name: ["i3", "suckless-tools", "lxterminal", "vim", "chromium-browser", "xdotool", "tmux"]
+      state: present
+  - name: Disable overscan (raspi-config)
+    command: raspi-config nonint do_overscan 1
+    become: true
+  - name: Set up lightdm configuration directory
+    file:
+      path: /etc/lightdm/lightdm.conf.d/
+      state: directory
+      owner: root
+      mode: 0755
+      recurse: true
+    become: true
+  - name: Automatically start x for pi user
+    copy:
+      src: autologin.conf
+      dest: /etc/lightdm/lightdm.conf.d/12-autologin.conf
+    become: true
+  - name: Copy statusbar script
+    copy:
+      src: statusbar.sh
+      dest: /home/pi/statusbar.sh
+      owner: pi
+      mode: 'u+x'
+  - name: Ensure i3 config path exists for pi user
+    file:
+      path: /home/pi/.config/i3/
+      state: directory
+      owner: pi
+  - name: Set up i3 for pi user
+    copy:
+      src: i3.conf
+      dest: /home/pi/.config/i3/config
+      owner: pi
+  - name: Ensure systemd config path exists for pi user
+    file:
+      path: /home/pi/.config/systemd/user/
+      state: directory
+      owner: pi
+      recurse: true
+  - name: Add chromium systemd unit for pi user
+    copy:
+      src: chromium.service
+      dest: /home/pi/.config/systemd/user/chromium.service
+      owner: pi
+  - name: Reload chromium systemd service
+    systemd:
+      enabled: true
+      daemon_reload: true
+      name: chromium
+      scope: user
+      state: restarted

@@ -1,0 +1,17 @@
+{
+    "lumen01": "https://grafana.adeo.no/d/lBpUC5cik/nais-cluster-overview?refresh=1m&orgId=1&kiosk",
+    "lumen02": "https://grafana.adeo.no/d/ft-QQfHWk/deployment-overview?orgId=1&refresh=1m&kiosk",
+
+    "lumen03": "https://grafana.adeo.no/d/0nmGteKmz/nais-cluster?refresh=1m&orgId=1&var-cluster=preprod-fss&var-newCluster=dev-fss&kiosk",
+    "lumen04": "https://grafana.adeo.no/d/0nmGteKmz/nais-cluster?refresh=1m&orgId=1&var-cluster=preprod-sbs&var-newCluster=dev-sbs&kiosk",
+    "lumen05": "https://grafana.adeo.no/d/0nmGteKmz/nais-cluster?refresh=1m&orgId=1&var-cluster=prod-fss&var-newCluster=prod-fss&kiosk",
+    "lumen06": "https://grafana.adeo.no/d/0nmGteKmz/nais-cluster?refresh=1m&orgId=1&var-cluster=prod-sbs&var-newCluster=prod-sbs&kiosk",
+
+    "lumen07": "https://grafana.adeo.no/d/hj6KUPHZk/deployment-status?refresh=1m&orgId=1&kiosk",
+    "lumen08": "https://grafana.adeo.no/d/ft-QQfHWk/deployment-overview?refresh=1m&orgId=1&kiosk",
+
+    "lumen09": "https://grafana.adeo.no/d/lBpUC5cik/nais-cluster-overview?refresh=1m&orgId=1&kiosk",
+    "lumen10": "https://grafana.adeo.no/d/lBpUC5cik/nais-cluster-overview?refresh=1m&orgId=1&kiosk",
+    "lumen11": "https://www.yr.no/place/Norway/Oslo/Oslo/Sannergata/hour_by_hour.html",
+    "lumen12": "https://grafana.adeo.no/d/xdXVt6nZz/loginservice?refresh=1m&orgId=1&var-cluster=prod-sbs&kiosk"
+}
