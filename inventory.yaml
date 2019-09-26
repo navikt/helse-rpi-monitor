@@ -1,26 +1,10 @@
 all:
   hosts:
-    lumen01:
-      ansible_host: 172.28.18.115
-    lumen02:
-      ansible_host: 172.28.51.242
-    lumen03:
-      ansible_host: 172.28.0.28
-    lumen04:
-      ansible_host: 172.28.18.130
-    lumen05:
-      ansible_host: 172.28.3.254
-    lumen06:
-      ansible_host: 172.28.18.131
-    lumen07:
-      ansible_host: 172.28.0.21
-    lumen08:
-      ansible_host: 172.28.32.193
-   #lumen09:
-   #  ansible_host: 172.28.8.87
-    lumen10:
-      ansible_host: 172.28.32.192
-   #lumen11:
-   #  luansible_host: 172.28.12.127
-    lumen12:
-      ansible_host: 172.28.32.194
+    tbd01:
+      ansible_host: 172.28.9.201
+  vars:
+    ansible_connection: paramiko
+    ansible_port: 80
+
+
+    
