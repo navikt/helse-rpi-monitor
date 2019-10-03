@@ -21,5 +21,5 @@ make
 ## Bootstrap
 Make sure inventory is up to date.
 ```
-ansible-playbook playbook.yml -b -i inventory.yaml
+ansible-playbook playbook.yml -b -i inventory.yaml --ask-pass
 ```

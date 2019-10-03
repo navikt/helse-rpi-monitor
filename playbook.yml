@@ -147,9 +147,11 @@
       dest: /home/pi/.config/systemd/user/chromium.service
       owner: pi
   - name: Reload chromium systemd service
+    become: true
+    become_user: pi
     systemd:
       enabled: true
+      user: true
       daemon_reload: true
       name: chromium
-      scope: user
       state: restarted
