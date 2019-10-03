@@ -82,7 +82,7 @@
       minute: "0"
       hour: "*/8"
       user: pi
-      job: killall chromium-browser-v7 > /dev/null
+      job: killall chromium-browse > /dev/null
   - name: Set timezone
     become: true
     timezone:

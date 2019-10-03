@@ -1,4 +1,4 @@
-# Aura's raspberry pi monitoring
+# PO Helse raspberry pi monitoring
 
 This provisioner will format your SD card with Raspbian, deploy a `wpa_supplicant.conf` file, and modify its `/etc/rc.local` so that the script `firstboot.sh` runs (on every boot).
 
@@ -19,7 +19,16 @@ make
 ```
 
 ## Bootstrap
-Make sure inventory is up to date.
+Make sure `inventory.yaml` is up to date.
 ```
 ansible-playbook playbook.yml -b -i inventory.yaml --ask-pass
 ```
+
+## Map host to Grafana board
+Make sure `screenMap.json` is up to date.
+
+## Ugly hack to get Azure token
+SSH to each host (or use xpanes)
+- Open new browser: `chromium-browser https://portal.office.com/`
+- Log in using any valid AD user
+- Close all browsers: `killall chromium-browse`
