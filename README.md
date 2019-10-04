@@ -30,5 +30,11 @@ Make sure `screenMap.json` is up to date.
 ## Ugly hack to get Azure token
 SSH to each host (or use xpanes)
 - Open new browser: `chromium-browser https://portal.office.com/`
-- Log in using any valid AD user
-- Close all browsers: `killall chromium-browse`
+- Log in using any valid AD user:
+  - `xdotool type my-username`
+  - `xdotool key Return`
+  - `xdotool type my-password`
+  - `xdotool key Tab`
+  - `xdotool key space`
+  - `xdotool key Return`    
+- Close all browsers (forces browser restart): `killall chromium-browse`
