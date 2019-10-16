@@ -95,7 +95,7 @@
   - name: Ensure packages are present (no install recommends)
     become: true
     apt:
-      name: ["postfix" , "xserver-xorg" , "xinit" , "lightdm" , "imagemagick" , "bc"]
+      name: ["postfix" , "xserver-xorg" , "xinit" , "lightdm" , "imagemagick" , "bc", "libgles2-mesa"]
       state: present
       install_recommends: no
   - name: Ensure packages are present (install recommends)
