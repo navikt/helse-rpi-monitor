@@ -1,15 +1,15 @@
 all:
   hosts:
+    helse01:
+      ansible_host: 172.28.15.100
+    helse02:
+      ansible_host: 172.28.39.156
     tbd01:
       ansible_host: 172.28.9.201
-    tbd02:
-      ansible_host: 172.28.15.100
     tbd03:
       ansible_host: 172.28.21.193
     tbd04:
       ansible_host: 172.28.21.202
-    tbd05:
-      ansible_host: 172.28.39.156
   vars:
     ansible_connection: paramiko_ssh
     ansible_port: 80
