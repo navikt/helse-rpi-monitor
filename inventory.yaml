@@ -8,6 +8,8 @@ all:
       ansible_host: 172.28.21.193
     tbd04:
       ansible_host: 172.28.21.202
+    tbd05:
+      ansible_host: 172.28.39.156
   vars:
     ansible_connection: paramiko_ssh
     ansible_port: 80
