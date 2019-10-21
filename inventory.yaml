@@ -4,6 +4,8 @@ all:
       ansible_host: 172.28.15.100
     helse02:
       ansible_host: 172.28.39.156
+    helse03:
+      ansible_host: 172.28.19.216
     tbd01:
       ansible_host: 172.28.9.201
     tbd03:
