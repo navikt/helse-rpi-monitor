@@ -33,7 +33,7 @@ each host will display. Each host fetches the screenmap from github, so changes
 must be pushed to github to take effect.
 
 ## Get token to access grafana
-SSH to each host (or use xpanes)
+SSH to each host (or use xpanes). (Note that ssh is exposed on port 80)
 - Open new browser: `chromium-browser https://portal.office.com/`
 - Log in using any valid Azure AD user that has access to the Grafana 
 Application (defined under "Applications" in Azure AD):
