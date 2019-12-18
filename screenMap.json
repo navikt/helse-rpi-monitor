@@ -3,6 +3,6 @@
     "helse02": "https://grafana.adeo.no/d/NZONsaemz/syfosm?orgId=1&refresh=5m&kiosk",
     "helse03": "https://grafana.adeo.no/d/I17iEommz/kafka-overview?orgId=1&refresh=1m",
     "tbd01": "https://grafana.adeo.no/d/9AZqDipWk/speil?orgId=1&from=now%2Fd&to=now%2Fd&var-datasource=prod-fss&kiosk",
-    "tbd03": "https://grafana.adeo.no/d/CnVpvS6mk/sykepengebehandling?orgId=1&refresh=5s&var-datasource=prod-fss",
+    "tbd03": "https://grafana.adeo.nod/a66ahZ0Wk/spleis?orgId=1&refresh=5s",
     "tbd04": "https://grafana.adeo.no/d/9AZqDipWk/speil?orgId=1"
 }
