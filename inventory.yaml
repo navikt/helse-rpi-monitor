@@ -12,7 +12,10 @@ all:
       ansible_host: 172.28.21.193
     tbd04:
       ansible_host: 172.28.21.202
+    risk01:
+      ansible_host: 172.28.16.47
   vars:
     ansible_connection: paramiko_ssh
     ansible_port: 80
     ansible_user: pi
+

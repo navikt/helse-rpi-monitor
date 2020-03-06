@@ -4,5 +4,7 @@
     "helse03": "https://grafana.adeo.no/d/I17iEommz/kafka-overview?orgId=1&refresh=1m",
     "tbd01": "https://grafana.adeo.no/d/9AZqDipWk/speil?orgId=1&from=now%2Fd&to=now%2Fd&var-datasource=prod-fss&kiosk",
     "tbd03": "https://grafana.adeo.no/d/a66ahZ0Wk/spleis?orgId=1&refresh=5s",
-    "tbd04": "https://grafana.adeo.no/d/9AZqDipWk/speil?orgId=1"
+    "tbd04": "https://grafana.adeo.no/d/9AZqDipWk/speil?orgId=1",
+    "risk01": "https://grafana.adeo.no/d/TCZ8Y-pZz/syfosm-teknisk?orgId=1&refresh=5m&kiosk"
 }
+
