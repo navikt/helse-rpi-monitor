@@ -1,4 +1,7 @@
 *.img
 provision
 playbook.retry
-.idea
+
+# Idea project files
+*.iml
+.idea/
